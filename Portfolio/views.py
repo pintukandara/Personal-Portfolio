@@ -8,6 +8,7 @@ from django.shortcuts import render
 from PortFolio import settings
 from Portfolio.forms import connectForm
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 
 
 # Create your views here.
@@ -28,13 +29,15 @@ def connect(request):
 
             try:
 
-                send_mail(
-                    subject=f"New message from {email}",
-                    message=f"Sender Email: {email}\n\nMessage:\n{message}",
+                email_message = EmailMessage(
+                    subject=f"New Portfolio Message from {email}",
+                    body=f"Message:\n{message}",
                     from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[settings.DEFAULT_FROM_EMAIL],
-                    fail_silently=False,
+                    to=[settings.DEFAULT_FROM_EMAIL],
+                    reply_to=[email],
                 )
+
+                email_message.send(fail_silently=False)
                 messages.success(request,"Message sent successfully")
 
             except Exception as e:
