@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PintuKandara</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'CSS/Home.css' %}">
+</head>
+<body>
+<header>
+    <nav class="topnav">
+        <h1 id="my-name">Pintu kandara</h1>
+        <div class="content-links">
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+        </div>
+    </nav>
+    <img src="../../static/Images/me.jpeg" alt="Bit emoji of pintu kandara" class="my-profile-photo" width="160" height="auto">
+
+    <h1>Hii, I am Pintu</h1>
+    <p id="bio-heading">I'm Software Engineer</p>
+    <p id="bio-detail">A passionate software engineer who loves building scalable,
+        efficient, and user-friendly applications.
+        I specialize in Python, Django, JavaScript,
+        and modern web technologies,
+        with a strong focus on clean code and real-world problem-solving.
+        I enjoy turning complex ideas into simple, impactful solutions.</p>
+
+    <a href="#contact" id="message-me-link">Wanna Connect?</a>
+</header>
+
+<section class="about-me" id="about">
+    <h2 id="about-me-heading">About Me</h2>
+    <div id="about-me-content">
+        <h2 id="about-me-content-heading">
+            I am a developer who enjoys coding,
+            problem-solving, and building meaningful web applications.
+            With experience in Python, Django, and JavaScript, I focus on writing clean,
+            efficient code and constantly improving my skills.
+        </h2>
+        <p id="about-me-content-detail">
+            I Created Projects using python, django, JavaScript, React, Docker and always eager to learn and solving problems.
+        </p>
+
+        <a href="https://github.com/pintukandara">
+            <i class="fa fa-github" style="font-size:36px"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/pintu-kandara-python-developer/">
+            <i class="fa fa-linkedin-square" style="font-size:36px"></i>
+        </a>
+    </div>
+</section>
+
+<section class="skills" id="skills">
+    <h2>Skills</h2>
+    <ul id="skills-list">
+        <li>Python</li>
+        <li>Django</li>
+        <li>JavaScript</li>
+        <li>React</li>
+        <li>Docker</li>
+        <li>Java</li>
+        <li>HTML</li>
+        <li>CSS</li>
+    </ul>
+</section>
+
+<section class="projects" id="projects">
+    <h2>Projects</h2>
+    <ul class="projects-list">
+        <li class="project">
+            <h3>Space Invader: A Spaceship game</h3>
+            <p>Created a Space Invaders clone with Python and pygame, implementing
+                player movement, shooting mechanics, enemy waves, and score
+                tracking and Game Over.</p>
+        </li>
+        <li class="project">
+            <h3>Bankist Application</h3>
+            <p>Built a Bankist web application using JavaScript to simulate basic
+                banking operations such as deposits, withdrawals, transfers, and
+                account management with dynamic UI updates.</p>
+        </li>
+        <li class="project">
+            <h3>RinCart: A full stack ecommerce web application</h3>
+            <p>Developed RinCart, an e-commerce web application using Django,
+                HTML, and CSS, JavaScript featuring user authentication, product
+                listings, a secure login system, check-out via Razorpay, Cancel items, forgot password, seller section, seller and buyer's communication etc.</p>
+        </li>
+    </ul>
+</section>
+
+<section class="experience" id="experience">
+    <h2>Experience</h2>
+    <div id="experience-list">
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="experience-title-group">
+                    <h3>Python Backend Developer</h3>
+                    <p class="company-name">VerveBridge</p>
+                </div>
+                <div class="experience-duration">
+                    <span class="duration-badge">3 Months</span>
+                    <p class="experience-dates">Sept 15, 2024 - Dec 15, 2024</p>
+                </div>
+            </div>
+            <div class="experience-description">
+                <p>Worked as a Python Backend Developer at VerveBridge, contributing to the development and optimization of scalable backend systems. Gained hands-on experience in building RESTful APIs, implementing database solutions, and working with Django framework. Collaborated with cross-functional teams to deliver efficient, maintainable code while following best practices in software development. Enhanced problem-solving skills by debugging complex issues and implementing performance improvements in production environments.</p>
+            </div>
+            <div class="experience-skills">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Django</span>
+                <span class="skill-tag">REST APIs</span>
+                <span class="skill-tag">Database Management</span>
+                <span class="skill-tag">Backend Development</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="lets-connect" id="contact">
+    <h2>Let's Connect</h2>
+    <form class="message-me" method="post" action="/message-me/">
+        {% csrf_token %}
+        <label for="email">Email Address:</label>
+        <input type="email" name="email" id="email" value="{{ email }}">
+        <label for="message_me">Message:</label>
+        <textarea name="message" id="message_me"></textarea>
+        <input type="submit" value="Send Message">
+    </form>
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <p class="{{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+</section>
+
+<footer>
+    <p>Thanks For visiting</p>
+    <p>Having any query mail me at: Pintukandara124@gmail.com</p>
+    <div class="social-links">
+        <a href="https://github.com/pintukandara">
+            <i class="fa fa-github" style="font-size:28px"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/pintu-kandara-python-developer/">
+            <i class="fa fa-linkedin-square" style="font-size:28px"></i>
+        </a>
+        <a href="https://instagram.com">
+            <i class="fa fa-instagram" style="font-size:28px"></i>
+        </a>
+    </div>
+    <p>Or Directly Contact me at: 9815937658</p>
+</footer>
+
+</body>
+</html>
