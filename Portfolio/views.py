@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+
+from PortFolio import settings
 from Portfolio.forms import connectForm
 from django.core.mail import send_mail
 
@@ -27,11 +29,11 @@ def connect(request):
             try:
 
                 send_mail(
-                    f"message from {email}",
-                    message,
-                    f"{email}",
-                    ["pintukandara124@gmail.com"],
-                    fail_silently=False
+                    subject=f"New message from {email}",
+                    message=f"Sender Email: {email}\n\nMessage:\n{message}",
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.DEFAULT_FROM_EMAIL],
+                    fail_silently=False,
                 )
                 messages.success(request,"Message sent successfully")
 
